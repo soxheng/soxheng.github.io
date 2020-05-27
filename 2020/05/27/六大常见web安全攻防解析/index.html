@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>六大常见web安全攻防解析 | 老黄的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#六大常见web攻防">
+  <meta name="description" content="六大常见web攻防">
 <meta property="og:type" content="article">
 <meta property="og:title" content="六大常见web安全攻防解析">
 <meta property="og:url" content="http://yoursite.com/2020/05/27/%E5%85%AD%E5%A4%A7%E5%B8%B8%E8%A7%81web%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="老黄的个人博客">
-<meta property="og:description" content="#六大常见web攻防">
+<meta property="og:description" content="六大常见web攻防">
 <meta property="og:locale" content="cn">
 <meta property="og:image" content="https://image.fundebug.com/2019-01-31-01.png">
 <meta property="article:published_time" content="2020-05-27T07:13:50.000Z">
-<meta property="article:modified_time" content="2020-05-27T07:26:26.553Z">
+<meta property="article:modified_time" content="2020-05-27T07:28:11.699Z">
 <meta property="article:author" content="老黄的博客">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://image.fundebug.com/2019-01-31-01.png">
@@ -175,8 +175,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#六大常见web攻防</p>
-<a id="more"></a> 
+        <h1 id="六大常见web攻防"><a href="#六大常见web攻防" class="headerlink" title="六大常见web攻防"></a><strong>六大常见web攻防</strong></h1><a id="more"></a> 
 <h2 id="一-XSS"><a href="#一-XSS" class="headerlink" title="一.XSS"></a><strong>一.XSS</strong></h2><p>XSS (Cross-Site Scripting)，跨站脚本攻击，因为缩写和 CSS重叠，所以只能叫 XSS。跨站脚本攻击是指通过存在安全漏洞的Web网站注册用户的浏览器内运行非法的HTML标签或JavaScript进行的一种攻击。</p>
 <p>跨站脚本攻击有可能造成以下影响:</p>
 <ul>
@@ -186,7 +185,7 @@
 </ul>
 <p><strong>XSS 的原理是恶意攻击者往 Web 页面里插入恶意可执行网页脚本代码，当用户浏览该页之时，嵌入其中 Web 里面的脚本代码会被执行，从而可以达到攻击者盗取用户信息或其他侵犯用户安全隐私的目的。</strong><br>XSS 的攻击方式千变万化，但还是可以大致细分为几种类型。</p>
 <h3 id="1-非持久型-XSS（反射型-XSS-）"><a href="#1-非持久型-XSS（反射型-XSS-）" class="headerlink" title="1.非持久型 XSS（反射型 XSS ）"></a><strong>1.非持久型 XSS（反射型 XSS ）</strong></h3><p>非持久型 XSS 漏洞，一般是通过给别人发送<strong>带有恶意脚本代码参数的 URL</strong>，当 URL 地址被打开时，特有的恶意代码参数被 HTML 解析、执行。<br><img src="https://image.fundebug.com/2019-01-31-01.png" alt=""><br>举一个例子，比如页面中包含有以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        document.write(&#39;&#39;</span><br><span class="line">            + &#39;&lt;option value&#x3D;1&gt;&#39;</span><br><span class="line">            +     location.href.substring(location.href.indexOf(&#39;default&#x3D;&#39;) + 8)</span><br><span class="line">            + &#39;&lt;&#x2F;option&gt;&#39;</span><br><span class="line">        );</span><br><span class="line">        document.write(&#39;&lt;option value&#x3D;2&gt;English&lt;&#x2F;option&gt;&#39;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line">攻击者可以直接通过 URL (类似:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        document.write(&#39;&#39;</span><br><span class="line">            + &#39;&lt;option value&#x3D;1&gt;&#39;</span><br><span class="line">            +     location.href.substring(location.href.indexOf(&#39;default&#x3D;&#39;) + 8)</span><br><span class="line">            + &#39;&lt;&#x2F;option&gt;&#39;</span><br><span class="line">        );</span><br><span class="line">        document.write(&#39;&lt;option value&#x3D;2&gt;English&lt;&#x2F;option&gt;&#39;);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br><span class="line">&#96;&#96;&#96;  </span><br><span class="line"></span><br><span class="line">攻击者可以直接通过 URL (类似:</span><br></pre></td></tr></table></figure>
 <p><a href="https://xxx.com/xxx?default=" target="_blank" rel="noopener">https://xxx.com/xxx?default=</a><script>alert(document.cookie)</script></p>
 <p>```<br>) 注入可执行的脚本代码。不过一些浏览器如Chrome其内置了一些XSS过滤器，可以防止大部分反射型XSS攻击。</p>
 
@@ -290,7 +289,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-XSS"><span class="toc-number">1.</span> <span class="toc-text">一.XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-非持久型-XSS（反射型-XSS-）"><span class="toc-number">1.1.</span> <span class="toc-text">1.非持久型 XSS（反射型 XSS ）</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#六大常见web攻防"><span class="toc-number">1.</span> <span class="toc-text">六大常见web攻防</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-XSS"><span class="toc-number">1.1.</span> <span class="toc-text">一.XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-非持久型-XSS（反射型-XSS-）"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.非持久型 XSS（反射型 XSS ）</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
